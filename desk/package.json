@@ -1,0 +1,22 @@
+{
+  "name": "desk",
+  "version": "0.0.1",
+  "description": "desk Profile Card",
+  "bin": {
+    "desk": "bin/card.js"
+  },
+  "scripts": {
+    "format": "prettier --write **/*.{js,json} && standard --fix",
+    "lint": "standard"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "boxen": "^2.1.0",
+    "chalk": "^2.4.1"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1",
+    "prettier": "^1.12.1",
+    "jest": "^23.6.0"
+  }
+}

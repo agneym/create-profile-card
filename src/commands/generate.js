@@ -9,7 +9,7 @@ module.exports = {
       print: { info },
       validateName,
       filesystem,
-      system,
+      installPackages,
     } = toolbox;
 
     const name = parameters.first;
@@ -39,15 +39,8 @@ module.exports = {
 
     filesystem.chmodSync(`${props.name}/bin/card.js`, '755');
 
-    const npmPath = system.which('npm');
-    console.log(npmPath);
+    await installPackages(props);
 
-    await system.spawn(`cd ${props.name} && ${npmPath} install && ${npmPath} run --quiet format`, {
-      shell: true,
-      stdio: 'inherit',
-      stderr: 'inherit',
-    });
-
-    info(`Generated profile card`)
+    info(`Generated profile card`);
   }
 }
