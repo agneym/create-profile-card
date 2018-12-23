@@ -19,11 +19,11 @@ module.exports = {
       return
     }
 
-    const details = promptDetails({ name });
+    const details = await promptDetails({ name });
 
     const config = {
       main: details.main,
-      detail: details.details,
+      detail: details.networks.details.values,
     }
 
     const props = { name, config }
@@ -49,7 +49,7 @@ module.exports = {
 
     filesystem.chmodSync(`${props.name}/bin/card.js`, '755')
 
-    // await installPackages(props)
+    await installPackages(props)
 
     info(`Generated profile card`)
   }

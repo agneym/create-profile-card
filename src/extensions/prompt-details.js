@@ -38,7 +38,7 @@ module.exports = toolbox => {
       name: 'details',
       message: "Fill fields for networks",
       template: networks.map((network) => (
-        `${network}: \${${network} URL}`
+        `${network}: \${${network}}`
       )).join("\n"),
     });
   }
@@ -47,6 +47,7 @@ module.exports = toolbox => {
     const mainResponse = await promptMain(props, prompt);
     const listResponse = await promptNetworkList();
     const detailsResponse = await promptNetworks(listResponse.networkList);
+
     return {
       main: mainResponse,
       networks: detailsResponse,
