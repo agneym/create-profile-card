@@ -14,13 +14,19 @@ module.exports = {
     } = toolbox
 
     const name = parameters.first
-    const props = { name }
 
     if (!validateName(name)) {
       return
     }
 
-    promptDetails(props);
+    const details = promptDetails({ name });
+
+    const config = {
+      main: details.main,
+      detail: details.details,
+    }
+
+    const props = { name, config }
     
     await filesystem.dir(props.name)
 
@@ -28,6 +34,7 @@ module.exports = {
       'bin/card.js.ejs',
       'package.json.ejs',
       'README.md.ejs',
+      'config.json.ejs',
       '.gitignore.ejs'
     ]
 

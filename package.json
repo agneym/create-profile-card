@@ -23,6 +23,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "enquirer": "^2.2.0",
     "gluegun": "next"
   },
   "devDependencies": {

@@ -1,12 +1,14 @@
+const { prompt } = require("enquirer");
+
 module.exports = toolbox => {
 
-  async function promptDetails(props) {
+  function promptMain(props) {
     const {
       prompt
     } = toolbox;
     const questions = [{
       message: "Enter your name?",
-      name: "userName",
+      name: "name",
       type: "input",
       initial: props.name,
     }, {
@@ -18,8 +20,37 @@ module.exports = toolbox => {
       name: "work",
       type: "input"
     }];
-    const response = await prompt.ask(questions);
+    return prompt.ask(questions);
+  }
 
+  function promptNetworkList() {
+    return prompt({
+      type: 'list',
+      required: true,
+      message: "List of networks (comma seperated values):",
+      name: "networkList",
+    })
+  }
+
+  function promptNetworks(networks) {
+    return prompt({
+      type: 'snippet',
+      name: 'details',
+      message: "Fill fields for networks",
+      template: networks.map((network) => (
+        `${network}: \${${network} URL}`
+      )).join("\n"),
+    });
+  }
+
+  async function promptDetails(props) {
+    const mainResponse = await promptMain(props, prompt);
+    const listResponse = await promptNetworkList();
+    const detailsResponse = await promptNetworks(listResponse.networkList);
+    return {
+      main: mainResponse,
+      networks: detailsResponse,
+    }
   }
 
   toolbox.promptDetails = promptDetails;
