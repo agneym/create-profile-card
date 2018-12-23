@@ -7,21 +7,12 @@ module.exports = {
       parameters,
       template: { generate },
       print: { info },
-      strings,
-    } = toolbox
+      validateName,
+    } = toolbox;
 
-    const { kebabCase } = strings
-
-    const name = parameters.first
-
-    if (!name || name.length === 0) {
-      print.error('You must provide a valid CLI name.')
-      print.error('Example: create-profile-card new foo')
-      return;
-    } else if (!/^[a-z0-9-]+$/.test(props.name)) {
-      const validName = kebabCase(props.name)
-      print.error(`${name} is not a valid name. Use lower-case and dashes only.`)
-      print.error(`Suggested: create-profile-card new ${validName}`)
+    const name = parameters.first;
+    
+    if(!validateName(name)) {
       return;
     }
 
