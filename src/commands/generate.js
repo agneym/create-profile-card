@@ -9,7 +9,8 @@ module.exports = {
       print: { info },
       validateName,
       filesystem,
-      installPackages
+      installPackages,
+      promptDetails,
     } = toolbox
 
     const name = parameters.first
@@ -19,6 +20,8 @@ module.exports = {
       return
     }
 
+    promptDetails(props);
+    
     await filesystem.dir(props.name)
 
     const files = [
@@ -39,7 +42,7 @@ module.exports = {
 
     filesystem.chmodSync(`${props.name}/bin/card.js`, '755')
 
-    await installPackages(props)
+    // await installPackages(props)
 
     info(`Generated profile card`)
   }

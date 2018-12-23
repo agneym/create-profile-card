@@ -1,40 +1,23 @@
-const chalk = require('chalk')
-const boxen = require('boxen')
+#!/usr/bin/env node
 
-const boxOptions = {
-  padding: 1,
-  margin: 1,
-  borderStyle: 'double',
-  align: 'center',
-  float: 'center',
-  borderColor: '#FF729F',
-  dimBorder: true
-}
+const chalk = require("chalk");
+const boxen = require("boxen");
+const config = require("../config.json");
 
-const textOptions = {
-  label: 'bold',
-  value: 'cyanBright'
-}
+const boxOptions = config.boxOptions;
 
-const details = {
-  name: 'Agney Menon',
-  handle: 'Boy with Silver Wings',
-  work: 'Javascript Developer @ Dexlock',
-  twitter: 'https://twitter.com/agneymenon',
-  github: 'https://github.com/boywithsilverwings',
-  linkedin: 'https://linkedin.com/in/agneymenon',
-  web: 'https://boywithsilverwings.github.io',
-  npx: 'npx boywithsilverwings'
-}
+const textOptions = config.textOptions;
+
+const detail = config.detail;
+const main = config.main;
 
 const output = chalk`
-${details.name} / {${textOptions.value} ${details.handle}}
-{${textOptions.label} Work}: {bold ${details.work}}
-{${textOptions.label} Twitter}: {${textOptions.value} ${details.twitter}}
-{${textOptions.label} Github}: {${textOptions.value} ${details.github}}
-{${textOptions.label} Linkedin}: {${textOptions.value} ${details.linkedin}}
-{${textOptions.label} Web}: {${textOptions.value} ${details.web}}
-{${textOptions.label} npx}: {${textOptions.value} ${details.npx}}
-`
+${main.name} / {${textOptions.value} ${main.handle}}
 
-console.log(boxen(output, boxOptions))
+{${textOptions.label} Work}: {bold ${main.work}}
+${Object.entries(detail).map(item => {
+return chalk`{${textOptions.label} ${ item[0] }}: {${textOptions.value} ${item[1]}}`
+}).join("\n")}
+`;
+
+console.log(boxen(output, boxOptions));
