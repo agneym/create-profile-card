@@ -1,7 +1,7 @@
-import { chmodSync } from 'fs'
-import { resolve } from 'path'
+const chmodSync = require('fs').chmodSync;
+const resolve = require('path').resolve;
 
-export default toolbox => {
+module.exports = toolbox => {
   toolbox.filesystem.resolve = resolve
   toolbox.filesystem.chmodSync = chmodSync
 }
