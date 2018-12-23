@@ -40,8 +40,9 @@ module.exports = {
     filesystem.chmodSync(`${props.name}/bin/card.js`, '755');
 
     const npmPath = system.which('npm');
+    console.log(npmPath);
 
-    await system.spawn(`cd ${props.name} && ${npmPath} install --silent && ${npmPath} run --quiet format`, {
+    await system.spawn(`cd ${props.name} && ${npmPath} install && ${npmPath} run --quiet format`, {
       shell: true,
       stdio: 'inherit',
       stderr: 'inherit',
