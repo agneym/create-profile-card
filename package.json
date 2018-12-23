@@ -1,6 +1,6 @@
 {
   "name": "create-profile-card",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "create-profile-card CLI",
   "bin": {
     "create-profile-card": "bin/create-profile-card"
