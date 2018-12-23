@@ -1,58 +1,57 @@
-const { prompt } = require("enquirer");
+const { prompt } = require('enquirer')
 
 module.exports = toolbox => {
-
-  function promptMain(props) {
+  function promptMain (props) {
     const {
       prompt
-    } = toolbox;
+    } = toolbox
     const questions = [{
-      message: "Enter your name?",
-      name: "name",
-      type: "input",
-      initial: props.name,
+      message: 'Enter your name?',
+      name: 'name',
+      type: 'input',
+      initial: props.name
     }, {
-      message: "Enter nickname/handle",
-      name: "handle",
-      type: "input"
+      message: 'Enter nickname/handle',
+      name: 'handle',
+      type: 'input'
     }, {
-      message: "Work/Education",
-      name: "work",
-      type: "input"
-    }];
-    return prompt.ask(questions);
+      message: 'Work/Education',
+      name: 'work',
+      type: 'input'
+    }]
+    return prompt.ask(questions)
   }
 
-  function promptNetworkList() {
+  function promptNetworkList () {
     return prompt({
       type: 'list',
       required: true,
-      message: "List of networks (comma seperated values):",
-      name: "networkList",
+      message: 'List of networks (comma seperated values):',
+      name: 'networkList'
     })
   }
 
-  function promptNetworks(networks) {
+  function promptNetworks (networks) {
     return prompt({
       type: 'snippet',
       name: 'details',
-      message: "Fill fields for networks",
+      message: 'Fill fields for networks',
       template: networks.map((network) => (
         `${network}: \${${network}}`
-      )).join("\n"),
-    });
+      )).join('\n')
+    })
   }
 
-  async function promptDetails(props) {
-    const mainResponse = await promptMain(props, prompt);
-    const listResponse = await promptNetworkList();
-    const detailsResponse = await promptNetworks(listResponse.networkList);
+  async function promptDetails (props) {
+    const mainResponse = await promptMain(props, prompt)
+    const listResponse = await promptNetworkList()
+    const detailsResponse = await promptNetworks(listResponse.networkList)
 
     return {
       main: mainResponse,
-      networks: detailsResponse,
+      networks: detailsResponse
     }
   }
 
-  toolbox.promptDetails = promptDetails;
+  toolbox.promptDetails = promptDetails
 }
