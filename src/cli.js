@@ -1,7 +1,6 @@
 const { build } = require('gluegun')
 
 async function run (argv) {
-
   const cli = build()
     .brand('create-profile-card')
     .src(__dirname)
