@@ -1,5 +1,6 @@
 module.exports = {
   name: 'create-profile-card',
+  description: 'Create new profile card project',
   alias: ['new', 'create', 'generate', 'n'],
   run: async toolbox => {
     const {
