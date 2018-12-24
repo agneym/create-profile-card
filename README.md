@@ -4,14 +4,14 @@ A CLI for creating a profile card package.
 
 ![Image of Profile Card](docs/terminal.png)
 
-# Usage 
+## Usage 
 
 ```
 npm init profile-card name
 ```
 ![Steps](docs/steps.gif)
 
-# Customising your card
+## Customising your card
 
 Inside the generated project, you will find a `config.json` file. 
 
@@ -31,7 +31,7 @@ You can also combine options like:
 }
 ```
 
-# License
+## License
 
 MIT - see LICENSE
 
