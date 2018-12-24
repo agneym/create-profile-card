@@ -51,10 +51,10 @@ module.exports = {
     await installPackages(props)
 
     success(`Generated profile card for ${props.name}`)
-    info("Next:")
+    info('Next:')
     info(`cd ${props.name}`)
     info(`npm link ${props.name}`)
-    info(props.name) 
-    info("Make necessary changes in config.json and npm publish")
+    info(props.name)
+    info('Make necessary changes in config.json and npm publish')
   }
 }

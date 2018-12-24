@@ -2,11 +2,11 @@ module.exports = toolbox => {
   function installPackages (props) {
     const {
       system: { which, spawn },
-      print: { success, info },
+      print: { success, info }
     } = toolbox
 
-    success("Generated files successfully")
-    info("Starting package installation")
+    success('Generated files successfully')
+    info('Starting package installation')
 
     const npmPath = which('npm')
 
