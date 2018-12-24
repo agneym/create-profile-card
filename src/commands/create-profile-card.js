@@ -5,7 +5,7 @@ module.exports = {
     const {
       parameters,
       template: { generate },
-      print: { info },
+      print: { info, success },
       validateName,
       filesystem,
       installPackages,
@@ -50,6 +50,11 @@ module.exports = {
 
     await installPackages(props)
 
-    info(`Generated profile card`)
+    success(`Generated profile card for ${props.name}`)
+    info("Next:")
+    info(`cd ${props.name}`)
+    info(`npm link ${props.name}`)
+    info(props.name) 
+    info("Make necessary changes in config.json and npm publish")
   }
 }
