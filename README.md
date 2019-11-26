@@ -1,5 +1,7 @@
 # Create Profile Card
 
+![npm](https://img.shields.io/npm/v/create-profile-card)
+
 A CLI for creating a profile card package.
 
 ![Image of Profile Card](docs/terminal.png)
