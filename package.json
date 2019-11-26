@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "enquirer": "^2.3.2",
-    "gluegun": "next"
+    "gluegun": "^4.1.2"
   },
   "devDependencies": {
     "jest": "^24.9.0",
